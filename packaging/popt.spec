@@ -63,9 +63,11 @@ mv %{buildroot}%{_prefix}/lib/pkgconfig/%{name}.pc %{buildroot}/%{_libdir}/pkgco
 
 %postun -n libpopt -p /sbin/ldconfig
 
-%files -n libpopt -f %{name}.lang
+%lang_package
+
+%files -n libpopt 
 %defattr(-,root,root)
-%doc COPYING
+%license COPYING
 %{_libdir}/libpopt.so.*
 
 %files devel
