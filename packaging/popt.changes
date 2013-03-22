@@ -1,3 +1,6 @@
+* Fri Mar 22 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20130220.145942@220ef52
+- Fixed package groups
+
 * Wed Feb 20 2013 Anas Nashif <anas.nashif@intel.com> submit/trunk/20121215.155857@bb75172
 - Fixed baselibs with correct lib name
 

@@ -4,7 +4,7 @@ Release:        0
 License:        XFree86-1.0
 Summary:        A C library for parsing command line parameters
 Url:            http://www.rpm5.org/
-Group:          System/Libraries
+Group:          Base/Libraries
 Source:         popt-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  pkgconfig
@@ -20,7 +20,7 @@ parsing arbitrary strings into argv[] arrays using shell-like rules.
 
 %package -n libpopt
 Summary:        A C library for parsing command line parameters
-Group:          System/Libraries
+Group:          Base/Libraries
 Provides:       popt = %{version}
 Obsoletes:      popt < %{version}
 
