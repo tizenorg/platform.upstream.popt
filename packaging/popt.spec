@@ -7,6 +7,7 @@ Url:            http://www.rpm5.org/
 Group:          Base/Libraries
 Source:         popt-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	popt.manifest
 BuildRequires:  pkgconfig
 
 %description
@@ -45,6 +46,7 @@ API documentation of the popt library, too.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 %build
 %configure --with-pic --disable-static
 make %{?_smp_mflags}
@@ -66,11 +68,13 @@ mv %{buildroot}%{_prefix}/lib/pkgconfig/%{name}.pc %{buildroot}/%{_libdir}/pkgco
 %lang_package
 
 %files -n libpopt 
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING
 %{_libdir}/libpopt.so.*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %doc README
 %{_libdir}/libpopt.so
