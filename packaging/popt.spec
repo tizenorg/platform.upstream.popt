@@ -1,7 +1,7 @@
 Name:           popt
 Version:        1.16
 Release:        0
-License:        XFree86-1.0
+License:        X11
 Summary:        A C library for parsing command line parameters
 Url:            http://www.rpm5.org/
 Group:          Base/Libraries
@@ -67,7 +67,7 @@ mv %{buildroot}%{_prefix}/lib/pkgconfig/%{name}.pc %{buildroot}/%{_libdir}/pkgco
 
 %lang_package
 
-%files -n libpopt 
+%files -n libpopt
 %manifest %{name}.manifest
 %defattr(-,root,root)
 %license COPYING
