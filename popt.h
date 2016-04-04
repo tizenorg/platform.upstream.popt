@@ -170,7 +170,7 @@ typedef struct poptItem_s {
  */
 /*@-exportvar@*/
 /*@unchecked@*/ /*@observer@*/
-extern struct poptOption poptAliasOptions[];
+__attribute__ ((visibility ("default"))) extern struct poptOption poptAliasOptions[];
 /*@=exportvar@*/
 #define POPT_AUTOALIAS { NULL, '\0', POPT_ARG_INCLUDE_TABLE, poptAliasOptions, \
 			0, "Options implemented via popt alias/exec:", NULL },
@@ -180,12 +180,12 @@ extern struct poptOption poptAliasOptions[];
  */
 /*@-exportvar@*/
 /*@unchecked@*/ /*@observer@*/
-extern struct poptOption poptHelpOptions[];
+__attribute__ ((visibility ("default"))) extern struct poptOption poptHelpOptions[];
 /*@=exportvar@*/
 
 /*@-exportvar@*/
 /*@unchecked@*/ /*@observer@*/
-extern struct poptOption * poptHelpOptionsI18N;
+__attribute__ ((visibility ("default"))) extern struct poptOption * poptHelpOptionsI18N;
 /*@=exportvar@*/
 
 #define POPT_AUTOHELP { NULL, '\0', POPT_ARG_INCLUDE_TABLE, poptHelpOptions, \
@@ -245,7 +245,7 @@ typedef void (*poptCallbackType) (poptContext con,
  * @return		NULL always
  */
 /*@null@*/
-poptContext poptFreeContext( /*@only@*/ /*@null@*/ poptContext con)
+__attribute__ ((visibility ("default"))) poptContext poptFreeContext( /*@only@*/ /*@null@*/ poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -258,7 +258,7 @@ poptContext poptFreeContext( /*@only@*/ /*@null@*/ poptContext con)
  * @return		initialized popt context
  */
 /*@only@*/ /*@null@*/
-poptContext poptGetContext(
+__attribute__ ((visibility ("default"))) poptContext poptGetContext(
 		/*@dependent@*/ /*@keep@*/ const char * name,
 		int argc, /*@dependent@*/ /*@keep@*/ const char ** argv,
 		/*@dependent@*/ /*@keep@*/ const struct poptOption * options,
@@ -272,7 +272,7 @@ poptContext poptGetContext(
  * @return		NULL always
  */
 /*@null@*/
-poptContext poptFini( /*@only@*/ /*@null@*/ poptContext con)
+__attribute__ ((visibility ("default"))) poptContext poptFini( /*@only@*/ /*@null@*/ poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -285,7 +285,7 @@ poptContext poptFini( /*@only@*/ /*@null@*/ poptContext con)
  * @return		initialized popt context (NULL on error).
  */
 /*@only@*/ /*@null@*/ /*@unused@*/
-poptContext poptInit(int argc, /*@dependent@*/ /*@keep@*/ const char ** argv,
+__attribute__ ((visibility ("default"))) poptContext poptInit(int argc, /*@dependent@*/ /*@keep@*/ const char ** argv,
 		/*@dependent@*/ /*@keep@*/ const struct poptOption * options,
 		/*@null@*/ const char * configPaths)
 	/*@globals fileSystem, internalState @*/
@@ -296,7 +296,7 @@ poptContext poptInit(int argc, /*@dependent@*/ /*@keep@*/ const char ** argv,
  * @param con		context
  */
 /*@unused@*/
-void poptResetContext(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) void poptResetContext(/*@null@*/poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -304,7 +304,7 @@ void poptResetContext(/*@null@*/poptContext con)
  * @param con		context
  * @return		next option val, -1 on last item, POPT_ERROR_* on error
  */
-int poptGetNextOpt(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) int poptGetNextOpt(/*@null@*/poptContext con)
 	/*@globals fileSystem, internalState @*/
 	/*@modifies con, fileSystem, internalState @*/;
 
@@ -314,7 +314,7 @@ int poptGetNextOpt(/*@null@*/poptContext con)
  * @return		option argument, NULL if no argument is available
  */
 /*@observer@*/ /*@null@*/ /*@unused@*/
-char * poptGetOptArg(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) char * poptGetOptArg(/*@null@*/poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -323,7 +323,7 @@ char * poptGetOptArg(/*@null@*/poptContext con)
  * @return		next argument, NULL if no argument is available
  */
 /*@observer@*/ /*@null@*/ /*@unused@*/
-const char * poptGetArg(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) const char * poptGetArg(/*@null@*/poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -332,7 +332,7 @@ const char * poptGetArg(/*@null@*/poptContext con)
  * @return		current argument, NULL if no argument is available
  */
 /*@observer@*/ /*@null@*/ /*@unused@*/
-const char * poptPeekArg(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) const char * poptPeekArg(/*@null@*/poptContext con)
 	/*@*/;
 
 /** \ingroup popt
@@ -341,7 +341,7 @@ const char * poptPeekArg(/*@null@*/poptContext con)
  * @return		argument array, NULL terminated
  */
 /*@observer@*/ /*@null@*/
-const char ** poptGetArgs(/*@null@*/poptContext con)
+__attribute__ ((visibility ("default"))) const char ** poptGetArgs(/*@null@*/poptContext con)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -351,7 +351,7 @@ const char ** poptGetArgs(/*@null@*/poptContext con)
  * @return		offending option
  */
 /*@observer@*/
-const char * poptBadOption(/*@null@*/poptContext con, unsigned int flags)
+__attribute__ ((visibility ("default"))) const char * poptBadOption(/*@null@*/poptContext con, unsigned int flags)
 	/*@*/;
 
 /** \ingroup popt
@@ -361,7 +361,7 @@ const char * poptBadOption(/*@null@*/poptContext con, unsigned int flags)
  * @return		0 on success, POPT_ERROR_OPTSTOODEEP on failure
  */
 /*@unused@*/
-int poptStuffArgs(poptContext con, /*@keep@*/ const char ** argv)
+__attribute__ ((visibility ("default"))) int poptStuffArgs(poptContext con, /*@keep@*/ const char ** argv)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -374,7 +374,7 @@ int poptStuffArgs(poptContext con, /*@keep@*/ const char ** argv)
  * @return		0 on success
  */
 /*@unused@*/
-int poptAddAlias(poptContext con, struct poptAlias alias, int flags)
+__attribute__ ((visibility ("default"))) int poptAddAlias(poptContext con, struct poptAlias alias, int flags)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -384,7 +384,7 @@ int poptAddAlias(poptContext con, struct poptAlias alias, int flags)
  * @param flags		0 for alias, 1 for exec
  * @return		0 on success
  */
-int poptAddItem(poptContext con, poptItem newItem, int flags)
+__attribute__ ((visibility ("default"))) int poptAddItem(poptContext con, poptItem newItem, int flags)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -392,7 +392,7 @@ int poptAddItem(poptContext con, poptItem newItem, int flags)
  * @param fn		file name
  * @return		0 on OK, 1 on NOTOK.
  */
-int poptSaneFile(const char * fn)
+__attribute__ ((visibility ("default"))) int poptSaneFile(const char * fn)
 	/*@globals errno, internalState @*/
 	/*@modifies errno, internalState @*/;
 
@@ -404,7 +404,7 @@ int poptSaneFile(const char * fn)
  * @param flags		1 to trim escaped newlines
  * return		0 on success
  */
-int poptReadFile(const char * fn, /*@null@*/ /*@out@*/ char ** bp,
+__attribute__ ((visibility ("default"))) int poptReadFile(const char * fn, /*@null@*/ /*@out@*/ char ** bp,
 		/*@null@*/ /*@out@*/ size_t * nbp, int flags)
 	/*@globals errno, fileSystem, internalState @*/
 	/*@modifies *bp, *nbp, errno, fileSystem, internalState @*/;
@@ -416,7 +416,7 @@ int poptReadFile(const char * fn, /*@null@*/ /*@out@*/ char ** bp,
  * @param fn		file name to read
  * @return		0 on success, POPT_ERROR_ERRNO on failure
  */
-int poptReadConfigFile(poptContext con, const char * fn)
+__attribute__ ((visibility ("default"))) int poptReadConfigFile(poptContext con, const char * fn)
 	/*@globals errno, fileSystem, internalState @*/
 	/*@modifies con->execs, con->numExecs,
 		errno, fileSystem, internalState @*/;
@@ -430,7 +430,7 @@ int poptReadConfigFile(poptContext con, const char * fn)
  * @param paths		colon separated file name(s) to read
  * @return		0 on success, POPT_ERROR_BADCONFIG on failure
  */
-int poptReadConfigFiles(poptContext con, /*@null@*/ const char * paths)
+__attribute__ ((visibility ("default"))) int poptReadConfigFiles(poptContext con, /*@null@*/ const char * paths)
 	/*@globals errno, fileSystem, internalState @*/
 	/*@modifies con->execs, con->numExecs,
 		errno, fileSystem, internalState @*/;
@@ -442,7 +442,7 @@ int poptReadConfigFiles(poptContext con, /*@null@*/ const char * paths)
  * @return		0 on success, POPT_ERROR_ERRNO on failure
  */
 /*@unused@*/
-int poptReadDefaultConfig(poptContext con, /*@unused@*/ int useEnv)
+__attribute__ ((visibility ("default"))) int poptReadDefaultConfig(poptContext con, /*@unused@*/ int useEnv)
 	/*@globals fileSystem, internalState @*/
 	/*@modifies con->execs, con->numExecs,
 		fileSystem, internalState @*/;
@@ -458,7 +458,7 @@ int poptReadDefaultConfig(poptContext con, /*@unused@*/ int useEnv)
  * @retval argvPtr	address of returned argument array
  * @return		0 on success, POPT_ERROR_NOARG on failure
  */
-int poptDupArgv(int argc, /*@null@*/ const char **argv,
+__attribute__ ((visibility ("default"))) int poptDupArgv(int argc, /*@null@*/ const char **argv,
 		/*@null@*/ /*@out@*/ int * argcPtr,
 		/*@null@*/ /*@out@*/ const char *** argvPtr)
 	/*@modifies *argcPtr, *argvPtr @*/;
@@ -474,7 +474,7 @@ int poptDupArgv(int argc, /*@null@*/ const char **argv,
  * @retval argcPtr	address of returned no. of arguments
  * @retval argvPtr	address of returned argument array
  */
-int poptParseArgvString(const char * s,
+__attribute__ ((visibility ("default"))) int poptParseArgvString(const char * s,
 		/*@out@*/ int * argcPtr, /*@out@*/ const char *** argvPtr)
 	/*@modifies *argcPtr, *argvPtr @*/;
 
@@ -525,7 +525,7 @@ this_is   =   fdsafdas
  * @see			poptParseArgvString
  */
 /*@-fcnuse@*/
-int poptConfigFileToString(FILE *fp, /*@out@*/ char ** argstrp, int flags)
+__attribute__ ((visibility ("default"))) int poptConfigFileToString(FILE *fp, /*@out@*/ char ** argstrp, int flags)
 	/*@globals fileSystem @*/
 	/*@modifies *fp, *argstrp, fileSystem @*/;
 /*@=fcnuse@*/
@@ -536,7 +536,7 @@ int poptConfigFileToString(FILE *fp, /*@out@*/ char ** argstrp, int flags)
  * @return		error string
  */
 /*@observer@*/
-const char * poptStrerror(const int error)
+__attribute__ ((visibility ("default"))) const char * poptStrerror(const int error)
 	/*@*/;
 
 /** \ingroup popt
@@ -546,7 +546,7 @@ const char * poptStrerror(const int error)
  * @param allowAbsolute	absolute paths only?
  */
 /*@unused@*/
-void poptSetExecPath(poptContext con, const char * path, int allowAbsolute)
+__attribute__ ((visibility ("default"))) void poptSetExecPath(poptContext con, const char * path, int allowAbsolute)
 	/*@modifies con @*/;
 
 /** \ingroup popt
@@ -555,7 +555,7 @@ void poptSetExecPath(poptContext con, const char * path, int allowAbsolute)
  * @param fp		ouput file handle
  * @param flags		(unused)
  */
-void poptPrintHelp(poptContext con, FILE * fp, /*@unused@*/ int flags)
+__attribute__ ((visibility ("default"))) void poptPrintHelp(poptContext con, FILE * fp, /*@unused@*/ int flags)
 	/*@globals fileSystem @*/
 	/*@modifies fp, fileSystem @*/;
 
@@ -565,7 +565,7 @@ void poptPrintHelp(poptContext con, FILE * fp, /*@unused@*/ int flags)
  * @param fp		ouput file handle
  * @param flags		(unused)
  */
-void poptPrintUsage(poptContext con, FILE * fp, /*@unused@*/ int flags)
+__attribute__ ((visibility ("default"))) void poptPrintUsage(poptContext con, FILE * fp, /*@unused@*/ int flags)
 	/*@globals fileSystem @*/
 	/*@modifies fp, fileSystem @*/;
 
@@ -575,7 +575,7 @@ void poptPrintUsage(poptContext con, FILE * fp, /*@unused@*/ int flags)
  * @param text		replacement text
  */
 /*@-fcnuse@*/
-void poptSetOtherOptionHelp(poptContext con, const char * text)
+__attribute__ ((visibility ("default"))) void poptSetOtherOptionHelp(poptContext con, const char * text)
 	/*@modifies con @*/;
 /*@=fcnuse@*/
 
@@ -586,7 +586,7 @@ void poptSetOtherOptionHelp(poptContext con, const char * text)
  */
 /*@-fcnuse@*/
 /*@observer@*/
-const char * poptGetInvocationName(poptContext con)
+__attribute__ ((visibility ("default"))) const char * poptGetInvocationName(poptContext con)
 	/*@*/;
 /*@=fcnuse@*/
 
@@ -598,7 +598,7 @@ const char * poptGetInvocationName(poptContext con)
  * @return		new argc
  */
 /*@-fcnuse@*/
-int poptStrippedArgv(poptContext con, int argc, char ** argv)
+__attribute__ ((visibility ("default"))) int poptStrippedArgv(poptContext con, int argc, char ** argv)
 	/*@modifies *argv @*/;
 /*@=fcnuse@*/
 
@@ -610,7 +610,7 @@ int poptStrippedArgv(poptContext con, int argc, char ** argv)
  * @return		0 on success, POPT_ERROR_NULLARG/POPT_ERROR_BADOPERATION
  */
 /*@unused@*/
-int poptSaveString(/*@null@*/ const char *** argvp, unsigned int argInfo,
+__attribute__ ((visibility ("default"))) int poptSaveString(/*@null@*/ const char *** argvp, unsigned int argInfo,
 		/*@null@*/const char * val)
 	/*@modifies *argvp @*/;
 
@@ -624,7 +624,7 @@ int poptSaveString(/*@null@*/ const char *** argvp, unsigned int argInfo,
  */
 /*@-incondefs@*/
 /*@unused@*/
-int poptSaveLongLong(/*@null@*/ long long * arg, unsigned int argInfo,
+__attribute__ ((visibility ("default"))) int poptSaveLongLong(/*@null@*/ long long * arg, unsigned int argInfo,
 		long long aLongLong)
 	/*@globals internalState @*/
 	/*@modifies *arg, internalState @*/
@@ -641,7 +641,7 @@ int poptSaveLongLong(/*@null@*/ long long * arg, unsigned int argInfo,
  */
 /*@-incondefs@*/
 /*@unused@*/
-int poptSaveLong(/*@null@*/ long * arg, unsigned int argInfo, long aLong)
+__attribute__ ((visibility ("default"))) int poptSaveLong(/*@null@*/ long * arg, unsigned int argInfo, long aLong)
 	/*@globals internalState @*/
 	/*@modifies *arg, internalState @*/
 	/*@requires maxSet(arg) >= 0 /\ maxRead(arg) == 0 @*/;
@@ -657,7 +657,7 @@ int poptSaveLong(/*@null@*/ long * arg, unsigned int argInfo, long aLong)
  */
 /*@-incondefs@*/
 /*@unused@*/
-int poptSaveShort(/*@null@*/ short * arg, unsigned int argInfo, long aLong)
+__attribute__ ((visibility ("default"))) int poptSaveShort(/*@null@*/ short * arg, unsigned int argInfo, long aLong)
 	/*@globals internalState @*/
 	/*@modifies *arg, internalState @*/
 	/*@requires maxSet(arg) >= 0 /\ maxRead(arg) == 0 @*/;
@@ -673,7 +673,7 @@ int poptSaveShort(/*@null@*/ short * arg, unsigned int argInfo, long aLong)
  */
 /*@-incondefs@*/
 /*@unused@*/
-int poptSaveInt(/*@null@*/ int * arg, unsigned int argInfo, long aLong)
+__attribute__ ((visibility ("default"))) int poptSaveInt(/*@null@*/ int * arg, unsigned int argInfo, long aLong)
 	/*@globals internalState @*/
 	/*@modifies *arg, internalState @*/
 	/*@requires maxSet(arg) >= 0 /\ maxRead(arg) == 0 @*/;
@@ -692,30 +692,30 @@ typedef struct poptBits_s {
 
 /*@-exportlocal -exportvar -globuse @*/
 /*@unchecked@*/
-extern unsigned int _poptBitsN;
+__attribute__ ((visibility ("default"))) extern unsigned int _poptBitsN;
 /*@unchecked@*/
-extern  unsigned int _poptBitsM;
+__attribute__ ((visibility ("default"))) extern  unsigned int _poptBitsM;
 /*@unchecked@*/
-extern  unsigned int _poptBitsK;
+__attribute__ ((visibility ("default"))) extern  unsigned int _poptBitsK;
 /*@=exportlocal =exportvar =globuse @*/
 
 /*@-exportlocal@*/
-int poptBitsAdd(/*@null@*/poptBits bits, /*@null@*/const char * s)
+__attribute__ ((visibility ("default"))) int poptBitsAdd(/*@null@*/poptBits bits, /*@null@*/const char * s)
 	/*@modifies bits @*/;
 /*@=exportlocal@*/
-int poptBitsChk(/*@null@*/poptBits bits, /*@null@*/const char * s)
+__attribute__ ((visibility ("default"))) int poptBitsChk(/*@null@*/poptBits bits, /*@null@*/const char * s)
 	/*@*/;
-int poptBitsClr(/*@null@*/poptBits bits)
+__attribute__ ((visibility ("default"))) int poptBitsClr(/*@null@*/poptBits bits)
 	/*@modifies bits @*/;
 /*@-exportlocal@*/
-int poptBitsDel(/*@null@*/poptBits bits, /*@null@*/const char * s)
+__attribute__ ((visibility ("default"))) int poptBitsDel(/*@null@*/poptBits bits, /*@null@*/const char * s)
 	/*@modifies bits @*/;
 /*@-fcnuse@*/
-int poptBitsIntersect(/*@null@*/ poptBits * ap, /*@null@*/ const poptBits b)
+__attribute__ ((visibility ("default"))) int poptBitsIntersect(/*@null@*/ poptBits * ap, /*@null@*/ const poptBits b)
 	/*@modifies *ap @*/;
-int poptBitsUnion(/*@null@*/ poptBits * ap, /*@null@*/ const poptBits b)
+__attribute__ ((visibility ("default"))) int poptBitsUnion(/*@null@*/ poptBits * ap, /*@null@*/ const poptBits b)
 	/*@modifies *ap @*/;
-int poptBitsArgs(/*@null@*/ poptContext con, /*@null@*/ poptBits * ap)
+__attribute__ ((visibility ("default"))) int poptBitsArgs(/*@null@*/ poptContext con, /*@null@*/ poptBits * ap)
 	/*@modifies con, *ap @*/;
 /*@=fcnuse@*/
 /*@=exportlocal@*/
@@ -729,7 +729,7 @@ int poptBitsArgs(/*@null@*/ poptContext con, /*@null@*/ poptBits * ap)
  */
 /*@-incondefs@*/
 /*@unused@*/
-int poptSaveBits(/*@null@*/ poptBits * bitsp, unsigned int argInfo,
+__attribute__ ((visibility ("default"))) int poptSaveBits(/*@null@*/ poptBits * bitsp, unsigned int argInfo,
 		/*@null@*/ const char * s)
 	/*@globals _poptBitsN, _poptBitsM, _poptBitsK, internalState @*/
 	/*@modifies *bitsp, _poptBitsN, _poptBitsM, _poptBitsK, internalState @*/;

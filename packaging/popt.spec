@@ -48,6 +48,9 @@ API documentation of the popt library, too.
 %setup -q
 cp %{SOURCE1001} .
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 %configure --with-pic --disable-static
 make %{?_smp_mflags}
 
